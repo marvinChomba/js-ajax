@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Async JS</title>
+</head>
+<body>
+    <h1>Async JS</h1>
+    <script>
+        g = [1,2,3]
+        h = [4,5,6]
+        let prom1 = new Promise((resolve,reject) => {
+            setTimeout(arr => {
+                console.log("Async 1 started")
+                resolve(arr)
+            },1200,g)
+            console.log("Don't mind me")
+        })
+        let prom2 = new Promise((resolve,reject) => {
+            setTimeout(arr => {
+                console.log("Async 2 started")
+                resolve(arr)
+            },1200,h)
+        })
+        prom1.then(res => {
+            console.log("Async 1 fulfilled")
+            console.log(res)
+            return prom2
+        }).then(res => {
+            console.log("Async 2 fulfilled")
+            console.log(res,"kkk")
+        }).catch(error => {
+            console.log(error)
+        })
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
